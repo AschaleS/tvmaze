@@ -23,11 +23,14 @@ class GetShow extends React.Component {
   render() {
     return (
       <div>
-        <div style={{ color: "black", float: "left", padding: "3px"}}>
-          <label style={{ fontSize: "18px"}}>Enter Show Name  </label>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: "black", padding: "3px", fontWeight: "bold", height: "100%", textAlign: 'center' }}>
+          <label style={{ fontSize: "28px" }}>Enter Show Name  :</label>
           <input style={{ width: "250px", height: "20px" }} value={this.state.origin} onChange={this.onOriginChange.bind(this)} />
         </div>
-        <button onClick={this.getInfo.bind(this)} style={{ color: "navy", padding: "5px", fontWeight: "bold" }}> Get Show Detail </button>
+        <button onClick={this.getInfo.bind(this)} style={{
+          marginLeft: '93px', color: "navy", fontWeight: "bold", backgroundColor: "#57e5c3", borderTop: '1px solid #CCCCCC',
+          borderRight: '1px solid #333333', borderBottom: '1px solid #333333', borderLeft: '1px solid #CCCCCC'
+        }}>  Get Show Detail </button>
       </div>
     )
   }

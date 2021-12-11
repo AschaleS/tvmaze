@@ -1,14 +1,12 @@
-
 import React from 'react';
 var moment = require('moment');
-import CastListEntry from './CastListEntry.jsx';
-import App from './App.jsx';
 
 
 class CastDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state ={
+    this.props.func();
+    this.state = {
       name: '',
       birthday: '',
       gender: '',
@@ -34,29 +32,27 @@ class CastDetail extends React.Component {
         console.log(data)
       })
       .catch(err => this.setState({
-      name: '',
-      birthday: '',
-      gender: '',
-      image: ''
-    }))
+        name: '',
+        birthday: '',
+        gender: '',
+        image: ''
+      }))
   }
 
 
 
-render() {
-  return (
+  render() {
+    return (
+      <div>
+        <span> Name: {this.props.cast.perosn.name} </span>
+        <span>BirthDay: {moment(this.props.cast.person.birthday).format("MMM Do YYYY")} </span>
+        <span>Gender: {this.props.cast.person.gender}</span>
+        <img style={{ width: '310px' }} src={this.props.cast.person.image.medium} />
+      </div>
 
-    <div>
-      <ul>
-        <li> Name: {this.state.name} </li><br />
-        <li>BirthDay: {moment(this.state.birthday).format("MMM Do YYYY")} </li><br />
-        <li>Gender: {this.state.gender}</li><br />
-        <img style={{ width: '310px' }} src={this.state.image.medium} /><br /><br />
-
-      </ul>
-    </div>
-  )
-}
+    )
+  }
 }
 
 export default CastDetail;
+

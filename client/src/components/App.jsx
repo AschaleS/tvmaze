@@ -24,8 +24,6 @@ class App extends React.Component {
           return response.json();
         }).then(data => {
           this.setState({ show: data })
-          console.log(data)
-
         })
         .catch(err => this.setState({ show: {} }))
     } else {
@@ -38,16 +36,16 @@ class App extends React.Component {
   render() {
     if (this.state.show.name === undefined) {
       return (
-        <div style={{marginLeft: '50px'}}>
-          <h1 style={{ color: "blue"}}>TVMaze Show </h1>
+        <div style={{ color: "#6200FF", padding: "25px", fontWeight: "bold", backgroundColor: "#57e5c3", height: "100vh", textAlign: 'center' }}>
+          <h1 style={{ color: "blue" }}>TVMaze Show </h1><br />
           <GetShow onGetShow={this.getShow.bind(this)} />
 
         </div>)
     } else {
       return (
 
-        <div style={{marginLeft: '80px'}}>
-           <h1 style={{ color: "blue" }}>TVMaze Show Details</h1>
+        <div style={{ color: "#6200FF", padding: "25px", fontWeight: "bold", backgroundColor: "#4cc7d4", height: "100%", textAlign: 'center' }}>
+          <h1 style={{ color: "blue" }}>TVMaze Show Details</h1>
           <ShowListEntry show={this.state.show} />
 
 

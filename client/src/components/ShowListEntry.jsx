@@ -1,6 +1,5 @@
 import React from 'react';
 var moment = require('moment');
-// import ShowDetail from './ShowDetail.jsx';
 import CastList from './CastList.jsx';
 
 
@@ -16,34 +15,31 @@ class ShowListEntry extends React.Component {
     this.getInfo();
   }
 
+
+
   getInfo(id) {
     fetch(`https://api.tvmaze.com/shows/${this.props.show.id}/cast`)
       .then(function (response) {
         return response.json();
       }).then(data => {
         this.setState({ casts: data })
-        console.log(data)
       })
       .catch(err => this.setState({ casts: [] }))
   }
 
+
   render() {
-    console.log("CastList response", this.state.casts)
     return (
-
-   <table>
-      <tr>
-        <tr>Show Name : {this.props.show.name} </tr><br />
-        <img style={{ width: '310px' }} src={this.props.show.image.medium} /><br /><br />
-
-        <tr>Show Type : {this.props.show.type} </tr>
-        <tr>Date Primiered : {moment(this.props.show.premiered).format("MMM Do YYYY")} </tr>
-        <tr>Date Ended : {moment(this.props.show.ended).format("MMM Do YYYY")} </tr><br />
-        <tr>Cast Members :</tr>
+      <div>
+        <span style={{ fontSize: '48px', fontWeight: 'bold', color: 'green' }}> {this.props.show.name} </span><br />
+        <img style={{ width: '300px' }} src={this.props.show.image.medium} /><br /><br />
+        <span style={{ fontSize: '20px', fontWeight: 'bold', color: 'black', textAlign: 'left' }}>Show Type : </span><span style={{ fontSize: '16px', fontWeight: 'bold', color: 'green' }}>{this.props.show.type} </span><br />
+        <span style={{ fontSize: '20px', fontWeight: 'bold', color: 'black' }}>Date Primiered : </span><span style={{ fontSize: '16px', fontWeight: 'bold', color: 'blue' }}>{moment(this.props.show.premiered).format("MMM Do YYYY")} </span><br />
+        <span style={{ fontSize: '20px', fontWeight: 'bold', color: 'black' }}>Date Ended : </span> <span style={{ fontSize: '16px', fontWeight: 'bold', color: 'blue' }}>{moment(this.props.show.ended).format("MMM Do YYYY")} </span><br /><br />
+        <span style={{ fontSize: '24px', fontWeight: 'bold' }}>Cast Members :</span>
         <CastList casts={this.state.casts} />
-      </tr>
-  </table>
- )
+      </div>
+    )
   }
 }
 

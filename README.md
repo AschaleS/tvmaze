@@ -1,9 +1,10 @@
 To run this on you local:
-first fork and clone it to your local machine
+
+First fork and clone it to your local machine
 then run npm install
 
 
-
+In a consol ru
 cd tvmaze
 npm run server-dev
 
